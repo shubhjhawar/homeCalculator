@@ -1,0 +1,13 @@
+@keyframes moveTruck {
+    0% {
+      transform: translateX(150%);
+    }
+    100% {
+      transform: translateX(-150%);
+    }
+  }
+  
+  .animate-truck {
+    animation: moveTruck 3s linear infinite;
+  }
+  
