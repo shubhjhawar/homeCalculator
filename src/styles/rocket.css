@@ -1,0 +1,14 @@
+/* Add this CSS to your stylesheet or component */
+@keyframes rocketTakeoff {
+    0% {
+      transform: translateY(100%) translateX(-50%);
+    }
+    100% {
+      transform: translateY(-1000%) translateX(100%);
+    }
+  }
+  
+.rocket-animation {
+    animation: rocketTakeoff 10s forwards; /* Adjust the duration as needed */
+}
+  
