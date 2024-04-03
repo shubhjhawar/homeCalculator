@@ -1,0 +1,16 @@
+.custom-radio input[type="radio"] {
+    display: none;
+  }
+  
+.radio-circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+.custom-radio input[type="radio"]:checked + .radio-circle {
+    background-color: purple; /* Change to the desired color */
+  }
+  

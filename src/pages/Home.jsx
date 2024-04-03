@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { home_bg, truck, sun, hotairballoon } from '../assets';
+import { home_bg, sun, hotairballoon } from '../assets';
 import Cloud from '../components/Cloud';
 import '../styles/truckAnimation.css';
-import { useNavigate } from 'react-router-dom';
+import MovingTruck from '../components/MovingTruck';
 
 const Home = () => {
-  const [isTruckMoving, setIsTruckMoving] = useState(false);
-  const navigate = useNavigate();
-
   return (
     <div className="relative h-full flex flex-col justify-between">
       {/* clouds */}
@@ -31,18 +28,9 @@ const Home = () => {
             מתכננים לעבור דירה? מעולה! אבל לפני שתתחילו לארוז, בוא נבדוק כמה זה באמת תעלה לכם ההובלה. עם המחשבון
             הקליל (אבל מדויק!) שלנו, תוכל להגיע מהר מאוד להערכת עלות ההובלה. בוא נתחיל!
           </p>
-          <button
-            className="relative overflow-hidden flex items-center text-white gap-4"
-            onMouseEnter={() => setIsTruckMoving(false)}
-            onMouseLeave={() => setIsTruckMoving(true)}
-            onClick={() => navigate('/baseline')}
-          >
-            <p>hello</p>
-            <img src={truck} alt="Truck" className={`truck ${isTruckMoving ? 'animate-truck' : ''}`} />
-            <p>hello</p>
-          </button>
         </div>
       </div>
+      <MovingTruck link="/baseline" />
       <div className='w-full mt-20 -z-[30] flex justify-end'>
         <img src={home_bg} alt="home_bg" className="w-full"/>
       </div>

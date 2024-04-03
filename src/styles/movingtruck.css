@@ -1,0 +1,17 @@
+@keyframes moveTruck {
+    from {
+      transform: translateX(50vw); /* Start position: right end of the screen */
+    }
+    to {
+      transform: translateX(0%); /* End position: center of the screen */
+    }
+  }
+  
+  .moving-truck {
+    animation: moveTruck 3s ease forwards; /* Change duration as needed */
+  }
+  
+  .moving-truck {
+    height: auto;
+  }
+  

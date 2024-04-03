@@ -8,5 +8,10 @@ import grayslab from "./grayslab.png"
 import grass from "./grass.png"
 import marker from "./marker.png"
 import rocket from "./rocket.png"
+import arrow from "./arrow.png"
+import items_bg from "./items_bg.png"
+import add from "./add.png"
+import minus from "./minus.png"
+import newCloud from "./newCloud.png"
 
-export {home_bg, cloud, cloudleft, truck, sun, hotairballoon, grayslab, grass, marker, rocket}
+export {home_bg, cloud, cloudleft, truck, sun, hotairballoon, grayslab, grass, marker, rocket, arrow, items_bg, add, minus, newCloud}
