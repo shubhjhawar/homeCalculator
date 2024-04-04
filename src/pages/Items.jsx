@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { items_bg, sun, hotairballoon, add, minus } from '../assets';
+import { items_bg, sun, hotairballoon, add, minus, progress_bar_items } from '../assets';
 import Cloud from '../components/Cloud';
 import '../styles/truckAnimation.css';
 import MovingTruck from '../components/MovingTruck';
