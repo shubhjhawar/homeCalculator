@@ -104,7 +104,7 @@ const Items = () => {
         ))}
       </div>
 
-      <MovingTruck link="/baseline" />
+      <MovingTruck link="/boxes" />
       </div>
       <div className='w-full mt-20 -z-[30] flex justify-end'>
         <img src={items_bg} alt="items_bg" className="w-full"/>
