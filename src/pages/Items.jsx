@@ -1,29 +1,31 @@
-import React, { useState } from 'react';
-import { items_bg, sun, hotairballoon, add, minus, progress_bar_items } from '../assets';
+import React, { useState, useEffect } from 'react';
+import { items_bg, sun, hotairballoon, add, minus } from '../assets';
 import Cloud from '../components/Cloud';
 import '../styles/truckAnimation.css';
 import MovingTruck from '../components/MovingTruck';
 import { listOfItems } from "../constants/index"
 import { IoIosAdd } from "react-icons/io";
 import { RiSubtractFill } from "react-icons/ri";
+import { useSelector, useDispatch } from 'react-redux';
+import { addItems } from '../slices/slices';
 
 const Items = () => {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const reduxItems = useSelector(state => state.items.items);
+  console.log(reduxItems);
+  const [selectedItems, setSelectedItems] = useState(reduxItems);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredItems, setFilteredItems] = useState([]);
+  const dispatch = useDispatch();
 
-  console.log(selectedItems)
-  
-  const handleSelectChange = (e) => {
-    const selectedOption = JSON.parse(e.target.value);
-    const isItemSelected = selectedItems.some(item => item.name === selectedOption.name);
-    
-    if (isItemSelected) {
-      const updatedSelectedItems = selectedItems.filter(item => item.name !== selectedOption.name);
-      setSelectedItems(updatedSelectedItems);
-    } else {
-      setSelectedItems([...selectedItems, selectedOption]);
-    }
+  const handleInputChange = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+    const filteredItems = listOfItems.filter(item =>
+      item.heading.toLowerCase().includes(query)
+    );
+    setFilteredItems(filteredItems);
   };
-
+  
   const handleQuantityChange = (name, change) => {
     setSelectedItems(prevItems => {
       const newItems = prevItems.map(item => {
@@ -36,6 +38,22 @@ const Items = () => {
       return newItems.filter(item => item.quantity > 0);
     });
   };
+
+  const handleSelectChange = (item) => {
+    const isItemSelected = selectedItems.some(i => i.name === item.name);
+    
+    if (isItemSelected) {
+      const updatedSelectedItems = selectedItems.filter(i => i.name !== item.name);
+      setSelectedItems(updatedSelectedItems);
+    } else {
+      setSelectedItems([...selectedItems, { ...item, quantity: 1 }]);
+    }
+  };
+
+  useEffect(() => {
+    setFilteredItems(listOfItems)
+  }, [])
+  
   
   return (
     <div className="fixed bottom-0 w-full z-50 h-full overflow-auto flex flex-col justify-between items-center">
