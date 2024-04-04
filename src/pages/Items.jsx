@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { items_bg, sun, hotairballoon, add, minus } from '../assets';
 import Cloud from '../components/Cloud';
 import '../styles/truckAnimation.css';
@@ -9,21 +9,18 @@ import { RiSubtractFill } from "react-icons/ri";
 
 const Items = () => {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredItems, setFilteredItems] = useState([]);
 
-  console.log(selectedItems)
-  
-  const handleSelectChange = (e) => {
-    const selectedOption = JSON.parse(e.target.value);
-    const isItemSelected = selectedItems.some(item => item.name === selectedOption.name);
-    
-    if (isItemSelected) {
-      const updatedSelectedItems = selectedItems.filter(item => item.name !== selectedOption.name);
-      setSelectedItems(updatedSelectedItems);
-    } else {
-      setSelectedItems([...selectedItems, selectedOption]);
-    }
+  const handleInputChange = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+    const filteredItems = listOfItems.filter(item =>
+      item.heading.toLowerCase().includes(query)
+    );
+    setFilteredItems(filteredItems);
   };
-
+  
   const handleQuantityChange = (name, change) => {
     setSelectedItems(prevItems => {
       const newItems = prevItems.map(item => {
@@ -36,6 +33,23 @@ const Items = () => {
       return newItems.filter(item => item.quantity > 0);
     });
   };
+
+  const handleSelectChange = (item) => {
+    console.log(item)
+    const isItemSelected = selectedItems.some(i => i.name === item.name);
+    
+    if (isItemSelected) {
+      const updatedSelectedItems = selectedItems.filter(i => i.name !== item.name);
+      setSelectedItems(updatedSelectedItems);
+    } else {
+      setSelectedItems([...selectedItems, { ...item, quantity: 1 }]);
+    }
+  };
+
+  useEffect(() => {
+    setFilteredItems(listOfItems)
+  }, [])
+  
   
   return (
     <div className="fixed bottom-0 w-full z-50 h-full overflow-auto flex flex-col justify-between items-center">
@@ -45,41 +59,59 @@ const Items = () => {
           <h1 className="text-xl">add items</h1>
         </div>
 
-        <select
-          onChange={handleSelectChange}
-          className="border border-gray-300 rounded-md px-3 py-2 text-right w-auto"
+        <h2 className='w-full flex justify-end mr-4'>Items</h2>
+        <input
+          type="text"
+          onChange={handleInputChange}
+          className="border border-gray-300 rounded-md px-3 py-2 text-right w-full"
           style={{ maxHeight: "100px" }}
-        >
-          <option value="">Select an item...</option>
-          {listOfItems.map((item, index) => (
-            <optgroup key={index} label={item.heading}>
-              {item.subheading.map((subItem, subIndex) => (
-                <option key={subIndex} value={JSON.stringify({name: subItem.name, price: subItem.price, quantity: 1})}>
-                  {subItem.name}
-                </option>
-              ))}
-            </optgroup>
-          ))}
-        </select>
-      
-      <div className='flex flex-col w-full items-center p-2 mb-5'>
-        {selectedItems.map((item, index) => (
-          <div key={index} className='flex justify-between w-full p-2'>
-            <div className='flex gap-5'>
-              <button onClick={() => handleQuantityChange(item.name, 1)}>
-                <IoIosAdd className='bg-white rounded-sm' />
-              </button>
-              <p>{item.quantity}</p>
-              <button onClick={() => handleQuantityChange(item.name, -1)}>
-                <RiSubtractFill className='bg-white rounded-sm' />
-              </button>
+          placeholder="Search..."
+          value={searchQuery}
+        />
+        <div className='bg-white w-full text-black rounded-md max-h-[200px] overflow-y-scroll' style={{ direction: 'rtl' }}>
+          {filteredItems.map((item, index) => (
+            <div key={index} className="p-2">
+              <div>
+                <h2 className='font-bold text-lg bg-gray-200 p-1'>{item.heading}</h2>
+                <ul>
+                  {item.subheading.map((subItem, subIndex) => {
+                    const isSelected = selectedItems.some(selectedItem => selectedItem.name === subItem.name);
+                                       
+                    return (
+                      <li key={subIndex} className="cursor-pointer hover:bg-blue-400 hover:text-white flex gap-2 items-center" onClick={() => handleSelectChange(subItem)}>
+                        {isSelected && (
+                          <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
+                            <path fill="#7F56D9" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z" />
+                          </svg>
+                        )}
+                        {subItem.name}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </div>
-            <p>{item.name}</p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+    
+        <div className='flex flex-col w-full items-center py-2 mb-5'>
+          {selectedItems.map((item, index) => (
+            <div key={index} className='flex justify-between w-full p-2'>
+              <div className='flex gap-5'>
+                <button onClick={() => handleQuantityChange(item.name, 1)}>
+                  <IoIosAdd className='bg-white rounded-sm' />
+                </button>
+                <p>{item.quantity}</p>
+                <button onClick={() => handleQuantityChange(item.name, -1)}>
+                  <RiSubtractFill className='bg-white rounded-sm' />
+                </button>
+              </div>
+              <p>{item.name}</p>
+            </div>
+          ))}
+        </div>
 
-      <MovingTruck link="/baseline" />
+        <MovingTruck link="/baseline" />
       </div>
       <div className='w-full mt-20 -z-[30] flex justify-end'>
         <img src={items_bg} alt="items_bg" className="w-full"/>
