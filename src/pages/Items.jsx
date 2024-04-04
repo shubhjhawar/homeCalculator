@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { items_bg, sun, hotairballoon, add, minus } from '../assets';
+import { items_bg, sun, hotairballoon, add, minus, progress_bar_items } from '../assets';
 import Cloud from '../components/Cloud';
 import '../styles/truckAnimation.css';
 import MovingTruck from '../components/MovingTruck';
@@ -39,6 +39,8 @@ const Items = () => {
   
   return (
     <div className="fixed bottom-0 w-full z-50 h-full overflow-auto flex flex-col justify-between items-center">
+    
+        <img src={progress_bar_items} className='h-2 mt-4 w-full px-6' />
       <div className="mt-20 md:w-1/3 flex flex-col justify-center items-center gap-3 z-20">
 
         <div className="p-2 flex flex-col justify-center items-center mt-5">

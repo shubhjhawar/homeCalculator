@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { grass, grayslab, marker, rocket } from '../assets';
+import { grass, grayslab, marker, rocket, progress_bar_baseline } from '../assets';
 import "../styles/rocket.css";
 import "../styles/buttons.css";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
@@ -37,6 +37,8 @@ const Baseline = () => {
 
   return (
     <div className="fixed bottom-0 w-full z-50 h-full flex flex-col justify-between items-center">
+      <img src={progress_bar_baseline} className='h-2 mt-4 w-full px-6' />
+
       <div className="mt-20 md:w-1/3 flex flex-col justify-end items-end gap-3 z-20">
         <h1 className="text-xl w-full flex justify-center">בוא נבדוק מה היא</h1>
         <h2 className="text-3xl font-bold w-full flex justify-center">עלות ההובלה שלך</h2>
