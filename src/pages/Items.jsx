@@ -6,11 +6,16 @@ import MovingTruck from '../components/MovingTruck';
 import { listOfItems } from "../constants/index"
 import { IoIosAdd } from "react-icons/io";
 import { RiSubtractFill } from "react-icons/ri";
+import { useSelector, useDispatch } from 'react-redux';
+import { addItems } from '../slices/slices';
 
 const Items = () => {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const reduxItems = useSelector(state => state.items.items);
+  console.log(reduxItems);
+  const [selectedItems, setSelectedItems] = useState(reduxItems);
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
+  const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
     const query = e.target.value.toLowerCase();
@@ -35,7 +40,6 @@ const Items = () => {
   };
 
   const handleSelectChange = (item) => {
-    console.log(item)
     const isItemSelected = selectedItems.some(i => i.name === item.name);
     
     if (isItemSelected) {
@@ -110,8 +114,10 @@ const Items = () => {
             </div>
           ))}
         </div>
-
-        <MovingTruck link="/baseline" />
+        
+        <div onClick={() => dispatch(addItems(selectedItems))}>
+          <MovingTruck link="/baseline" />
+        </div>
       </div>
       <div className='w-full mt-20 -z-[30] flex justify-end'>
         <img src={items_bg} alt="items_bg" className="w-full"/>
