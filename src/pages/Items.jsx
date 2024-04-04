@@ -44,25 +44,30 @@ const Items = () => {
       <div className="mt-20 md:w-1/3 flex flex-col justify-center items-center gap-3 z-20">
 
         <div className="p-2 flex flex-col justify-center items-center mt-5">
-          <h1 className="text-xl">add items</h1>
+          <h1 className="text-3xl font-bold">הוסף פריטים למשאית שלך</h1>
         </div>
 
-        <select
-          onChange={handleSelectChange}
-          className="border border-gray-300 rounded-md px-3 py-2 text-right w-auto"
-          style={{ maxHeight: "100px" }}
-        >
-          <option value="">Select an item...</option>
-          {listOfItems.map((item, index) => (
-            <optgroup key={index} label={item.heading}>
-              {item.subheading.map((subItem, subIndex) => (
-                <option key={subIndex} value={JSON.stringify({name: subItem.name, price: subItem.price, quantity: 1})}>
-                  {subItem.name}
-                </option>
-              ))}
-            </optgroup>
-          ))}
-        </select>
+        <div className="flex flex-col items-end">
+          <p className='text-right'>חפש פריטים</p>
+          <select
+            onChange={handleSelectChange}
+            className="border border-gray-300 rounded-md px-3 py-2 text-right w-auto"
+            style={{ maxHeight: "100px" }}
+          >
+            <option value="">ארון 3 דלתות, מקרר, שולחן אוכל</option>
+            {listOfItems.map((item, index) => (
+              <optgroup key={index} label={item.heading}>
+                {item.subheading.map((subItem, subIndex) => (
+                  <option key={subIndex} value={JSON.stringify({name: subItem.name, price: subItem.price, quantity: 1})}>
+                    {subItem.name}
+                  </option>
+                ))}
+              </optgroup>
+            ))}
+          </select>
+        </div>
+
+
       
       <div className='flex flex-col w-full items-center p-2 mb-5'>
         {selectedItems.map((item, index) => (

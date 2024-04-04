@@ -22,8 +22,8 @@ const Home = () => {
       <div className="flex h-full justify-center mt-24">
         {/* main heading div */}
         <div className="w-1/2 max-md:w-full h-full p-2 flex flex-col justify-center items-center gap-6">
-          <h1 className="text-xl">בוא נבדוק מה היא</h1>
-          <h2 className="text-3xl font-bold">עלות ההובלה שלך</h2>
+          <h1 className="text-2xl font-semibold ">בוא נבדוק מה היא</h1>
+          <h2 className="text-4xl font-bold text-white">עלות ההובלה שלך</h2>
           <p>
             מתכננים לעבור דירה? מעולה! אבל לפני שתתחילו לארוז, בוא נבדוק כמה זה באמת תעלה לכם ההובלה. עם המחשבון
             הקליל (אבל מדויק!) שלנו, תוכל להגיע מהר מאוד להערכת עלות ההובלה. בוא נתחיל!
