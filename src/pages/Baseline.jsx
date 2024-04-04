@@ -13,12 +13,22 @@ const Baseline = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const baselineForm = useSelector(state => state.items.baseline);
-  const [form, setForm] = useState(baselineForm)
+  const [form, setForm] = useState(baselineForm);
+  const autocompleteRef = useRef(null); 
 
   const {isLoaded} = useJsApiLoader({
     googleMapsApiKey: 'AIzaSyAuIchE5mdfEw_S7oM8I5ZkpCcQyWOMg-Y',
     libraries: ['places']
   })
+  
+  const handlePlaceSelect = () => {
+    if (autocompleteRef.current !== null) {
+      const place = autocompleteRef.current.getPlace();
+      if (place && place.formatted_address) {
+        handleAddressChange(place.formatted_address);
+      }
+    }
+  };
 
   const handleAddressChange = (value) => {
     setForm({ ...form, address: value });
@@ -53,8 +63,15 @@ const Baseline = () => {
         {/* address */}
         <div className="w-full flex flex-col justify-end items-end gap-1">
           <h3 className='mb-1'>Address</h3>
-          <Autocomplete>
-            <input value={form.address} onChange={(e) => handleAddressChange(e.target.value)}  className='w-[400px] bg-transparent border border-black border-opacity-100 px-4 py-2 rounded-md'/>
+          <Autocomplete 
+            onLoad={autocomplete => { autocompleteRef.current = autocomplete; }}
+            onPlaceChanged={handlePlaceSelect}
+          >
+            <input
+              value={form.address}
+              onChange={(e) => handleAddressChange(e.target.value)}
+              className='w-[400px] bg-transparent border border-black border-opacity-100 px-4 py-2 rounded-md'
+            />
           </Autocomplete>
         </div>
 

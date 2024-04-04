@@ -4,13 +4,13 @@ const initialState = {
   items: [],
   baseline: {
     address: '',
-    floor: '',
-    elevator: '',
-    truckAccess: ''
+    floor: '1',
+    elevator: false,
+    truckAccess: 'easy'
   },
   destination: {
     address: '',
-    floor: '',
+    floor: '1',
     elevator: false,
     truckAccess: 'easy'
   }
@@ -27,10 +27,15 @@ export const mainSlice = createSlice({
     addBaseline: (state, action) => {
       const { address, floor, elevator, truckAccess } = action.payload;
       state.baseline = { address, floor, elevator, truckAccess };
-    }
+    },
+
+    addDestination: (state, action) => {
+      const { address, floor, elevator, truckAccess } = action.payload;
+      state.destination = { address, floor, elevator, truckAccess };
+    },
   },
 });
 
-export const { addItems, addBaseline } = mainSlice.actions;
+export const { addItems, addBaseline, addDestination } = mainSlice.actions;
 
 export default mainSlice.reducer;
