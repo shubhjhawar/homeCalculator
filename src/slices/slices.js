@@ -17,7 +17,13 @@ const initialState = {
   boxes: 0,
   packagedItems: [],
   assembledItems: [],
-  disassembledIems: []
+  disassembledIems: [],
+  storageItems: [],
+  storagePeriod: {
+    startDay: '',
+    endDay: '',
+  },
+  craneItems: []
 };
 
 export const mainSlice = createSlice({
@@ -110,6 +116,42 @@ export const mainSlice = createSlice({
       state.disassembledIems = state.disassembledIems.filter(i => i.name !== item.name);
     },
 
+    addCraneItems: (state, action) => {
+      const newCraneItems = action.payload.filter(newItem => !state.craneItems.some(existingItem => existingItem.name === newItem.name));
+      state.craneItems.push(...newCraneItems);
+    },
+
+    changeCraneItemQuantity: (state, action) => {
+      const { name, change } = action.payload;
+      const craneItemIndex = state.craneItems.findIndex(item => item.name === name);
+      if (craneItemIndex !== -1) {
+        state.craneItems[craneItemIndex].quantity += change;
+      }
+    },
+
+    removeCraneItem: (state, action) => {
+      const {item} = action.payload;
+      state.craneItems = state.craneItems.filter(i => i.name !== item.name);
+    },
+
+    addStorageItems: (state, action) => {
+      const newStorageItems = action.payload.filter(newItem => !state.storageItems.some(existingItem => existingItem.name === newItem.name));
+      state.storageItems.push(...newStorageItems);
+    },
+
+    changeStorageItemQuantity: (state, action) => {
+      const { name, change } = action.payload;
+      const storageItemIndex = state.storageItems.findIndex(item => item.name === name);
+      if (storageItemIndex !== -1) {
+        state.storageItems[storageItemIndex].quantity += change;
+      }
+    },
+
+    removeStorageItem: (state, action) => {
+      const {item} = action.payload;
+      state.storageItems = state.storageItems.filter(i => i.name !== item.name);
+    },
+
     
   },
 });
@@ -121,7 +163,13 @@ export const {
   removeAssembledItem,
   addDisassembledItems,
   changeDisassembledItemQuantity,
-  removeDisassembledItem
+  removeDisassembledItem,
+  addCraneItems,
+  changeCraneItemQuantity,
+  removeCraneItem,
+  addStorageItems,
+  changeStorageItemQuantity,
+  removeStorageItem
 
 } = mainSlice.actions;
 
