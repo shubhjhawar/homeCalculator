@@ -88,7 +88,7 @@ const Boxes = () => {
           <Cloud />
         </div>
         <div onClick={()=>dispatch(addBoxes(progress))}>
-          <MovingTruck link="/summary" />
+          <MovingTruck link="/services" />
         </div>
         {/* Background image */}
         <img src={boxes_img} alt="background" className='absolute bottom-0 w-full h-1/3 max-md:w-14 max-md:h-24 z-30' />
@@ -99,7 +99,7 @@ const Boxes = () => {
 
         {/* Button with right arrow */}
       <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
-       <Link to="/summary">
+       <Link to="/services">
         <img src={carousel_arrow} alt="Button with right arrow" />
       </Link>
       </div>

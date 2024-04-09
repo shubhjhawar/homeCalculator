@@ -7,7 +7,7 @@ import { listOfItems } from "../constants/index"
 import { IoIosAdd } from "react-icons/io";
 import { RiSubtractFill } from "react-icons/ri";
 import { useSelector, useDispatch } from 'react-redux';
-import { addItems } from '../slices/slices';
+import { addItems, changeItemQuantity, removeItem } from '../slices/slices';
 
 const Items = () => {
   const reduxItems = useSelector(state => state.items.items);
@@ -28,16 +28,23 @@ const Items = () => {
   
   const handleQuantityChange = (name, change) => {
     setSelectedItems(prevItems => {
-      const newItems = prevItems.map(item => {
-        if (item.name === name) {
-          return { ...item, quantity: item.quantity + change };
-        }
-        return item;
-      });
+        const newItems = prevItems.map(item => {
+            if (item.name === name) {
+                const updatedQuantity = item.quantity + change;
+                if (updatedQuantity <= 0) {
+                    dispatch(removeItem({ item }));
+                    return null; // Returning null to be filtered out later
+                }
+                return { ...item, quantity: updatedQuantity };
+            }
+            return item;
+        });
 
-      return newItems.filter(item => item.quantity > 0);
+        return newItems.filter(item => item !== null && item.quantity > 0); // Filtering out null items
     });
+    dispatch(changeItemQuantity({ name, change }));
   };
+
 
   const handleSelectChange = (item) => {
     const isItemSelected = selectedItems.some(i => i.name === item.name);
@@ -48,6 +55,8 @@ const Items = () => {
     } else {
       setSelectedItems([...selectedItems, { ...item, quantity: 1 }]);
     }
+
+    dispatch(removeItem({item}))
   };
 
   useEffect(() => {
@@ -128,7 +137,7 @@ const Items = () => {
         </div>
         
         <div onClick={() => dispatch(addItems(selectedItems))}>
-          <MovingTruck link="/baseline" />
+          <MovingTruck link="/boxes" />
         </div>
       </div>
       <div className='w-full mt-20 -z-[30] flex justify-end'>
