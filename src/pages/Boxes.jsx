@@ -3,10 +3,14 @@ import { boxes_img, cute_boxes, progress_bar, carousel_arrow } from '../assets';
 import Cloud from '../components/Cloud';
 import MovingTruck from '../components/MovingTruck';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { useSelector, useDispatch } from 'react-redux';
+import { addBoxes } from '../slices/slices';
 
 
 const Boxes = () => {
-  const [progress, setProgress] = useState(0);
+  const Boxes = useSelector(state => state.items.boxes);
+  const dispatch = useDispatch();
+  const [progress, setProgress] = useState(Boxes);
 
   const handleProgressChange = (event) => {
     const value = parseInt(event.target.value);
@@ -83,8 +87,9 @@ const Boxes = () => {
         <div className="absolute top-[320px] left-20 max-md:left-[20px] w-24 h-12">
           <Cloud />
         </div>
-
-        <MovingTruck link="/summary" />
+        <div onClick={()=>dispatch(addBoxes(progress))}>
+          <MovingTruck link="/services" />
+        </div>
         {/* Background image */}
         <img src={boxes_img} alt="background" className='absolute bottom-0 w-full h-1/3 max-md:w-14 max-md:h-24 z-30' />
 
@@ -94,7 +99,7 @@ const Boxes = () => {
 
         {/* Button with right arrow */}
       <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
-       <Link to="/summary">
+       <Link to="/services">
         <img src={carousel_arrow} alt="Button with right arrow" />
       </Link>
       </div>

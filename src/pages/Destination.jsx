@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { grass, grayslab, marker, rocket, progress_bar_destination } from '../assets';
 import "../styles/rocket.css";
 import "../styles/buttons.css";
@@ -6,21 +6,38 @@ import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import MovingTruck from '../components/MovingTruck';
 import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
+import { useSelector, useDispatch } from 'react-redux';
+import { addDestination } from '../slices/slices';
 
 
 const Destination = () => {
   const navigate = useNavigate();
-  const [form, setForm] = useState({
-    address:"",
-    elevator:false,
-    floor:"",
-    truckAccess:"easy"
-  })
+  const dispatch = useDispatch();
+  const destinationForm = useSelector(state => state.items.destination);
+  const [form, setForm] = useState(destinationForm)
+  const autocompleteRef = useRef(null); 
 
   const {isLoaded} = useJsApiLoader({
     googleMapsApiKey: 'AIzaSyAuIchE5mdfEw_S7oM8I5ZkpCcQyWOMg-Y',
     libraries: ['places']
   })
+
+  const handlePlaceSelect = () => {
+    if (autocompleteRef.current !== null) {
+      const place = autocompleteRef.current.getPlace();
+      if (place && place.formatted_address) {
+        handleAddressChange(place.formatted_address);
+      }
+    }
+  };
+
+  const handleAddressChange = (value) => {
+    setForm({ ...form, address: value });
+  };  
+
+  const handleFloorChange = (value) => {
+    setForm({ ...form, floor: value });
+  };
 
   const handleElevatorChange = (value) => {
     setForm({ ...form, elevator: value });
@@ -46,8 +63,15 @@ const Destination = () => {
         {/* address */}
         <div className="w-full flex flex-col justify-end items-end gap-1">
           <h3 className='mb-1'>Address</h3>
-          <Autocomplete>
-            <input className='w-[400px] bg-transparent border border-black border-opacity-100 px-4 py-2 rounded-md'/>
+          <Autocomplete 
+            onLoad={autocomplete => { autocompleteRef.current = autocomplete; }}
+            onPlaceChanged={handlePlaceSelect}
+          >
+            <input
+              value={form.address}
+              onChange={(e) => handleAddressChange(e.target.value)}
+              className='w-[400px] bg-transparent border border-black border-opacity-100 px-4 py-2 rounded-md'
+            />
           </Autocomplete>
         </div>
 
@@ -71,7 +95,7 @@ const Destination = () => {
           {/* Floor selection dropdown */}
           <div className="flex flex-col justify-end items-end">
             <h3 className='mb-1'>Floor</h3>
-            <select className="px-4 py-2 border border-black border-opacity-100 rounded-md bg-transparent">
+            <select onChange={(e) => handleFloorChange(e.target.value)} className="px-4 py-2 border border-black border-opacity-100 rounded-md bg-transparent">
               {[...Array(20)].map((_, index) => (
                 <option key={index} value={index + 1} className='bg-[#96E0F8]'>{index + 1}</option>
               ))}
@@ -98,7 +122,9 @@ const Destination = () => {
           </div>
         </div>
         <div className="w-full flex justify-center mt-4">
-          <MovingTruck link="/items" />
+          <div onClick={()=>dispatch(addDestination(form))}>
+            <MovingTruck link="/items" />
+          </div>
         </div>
       </div>
 
