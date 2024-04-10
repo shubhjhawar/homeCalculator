@@ -23,7 +23,7 @@ const initialState = {
     startDay: '',
     endDay: '',
   },
-  craneItems: []
+  craneItems: [],
 };
 
 export const mainSlice = createSlice({
@@ -152,6 +152,13 @@ export const mainSlice = createSlice({
       state.storageItems = state.storageItems.filter(i => i.name !== item.name);
     },
 
+    setStorageStartDay: (state, action) => {
+      state.storagePeriod.startDay = action.payload;
+    },
+
+    setStorageEndDay: (state, action) => {
+      state.storagePeriod.endDay = action.payload;
+    },
     
   },
 });
@@ -169,7 +176,9 @@ export const {
   removeCraneItem,
   addStorageItems,
   changeStorageItemQuantity,
-  removeStorageItem
+  removeStorageItem,
+  setStorageStartDay,
+  setStorageEndDay,
 
 } = mainSlice.actions;
 
