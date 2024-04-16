@@ -13,7 +13,7 @@ const Summary = () => {
 
 
   return (
-    <div className="fixed bottom-0 w-full z-50 h-full flex flex-col justify-between items-center pt-10">
+    <div className="fixed bottom-0 w-full z-50 h-full flex flex-col justify-between items-center pt-10 overflow-auto">
       <div className="flex max-md:flex-col gap-6 text-neutral-50 text-xl text-center">
         <button onClick={()=>setToggle(0)} className={`w-40 h-auto ${toggle===0 ? 'bg-orange-400' : ' bg-gray-400'} p-2 rounded-lg font-semibold`}>המלצות לחיסכון בעלויות</button>
         <button onClick={()=>setToggle(1)} className={`w-40 h-auto ${toggle===1 ? 'bg-orange-400' : ' bg-gray-400'} p-2 rounded-lg font-semibold`}>פירוט עלויות</button>
@@ -47,15 +47,17 @@ const Summary = () => {
           <Details />
         </div>
       )}
-      {/* Background image */}
-      <img src={boxes_img} alt="background" className='bottom-0 w-full' />
 
-       {/* Button with right arrow */}
-       <div className="absolute top-1/2 right-8 transform -translate-y-1/2 hidden lg:block">
+      {/* Button with right arrow */}
+      <div className="absolute top-1/2 right-8 transform -translate-y-1/2 hidden lg:block">
         <Link to="/summary">
           <img src={carousel_arrow} alt="Button with right arrow" />
         </Link>
-        </div>  
+      </div>  
+
+      {/* Background image */}
+      <img src={boxes_img} alt="background"/>
+
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { getDistance } from '../utils';
 
 const initialState = {
   items: [],
@@ -17,7 +18,7 @@ const initialState = {
   boxes: 0,
   packagedItems: [],
   assembledItems: [],
-  disassembledIems: [],
+  disassembledItems: [],
   storageItems: [],
   storagePeriod: {
     startDay: '',
@@ -104,21 +105,21 @@ export const mainSlice = createSlice({
     },
 
     addDisassembledItems: (state, action) => {
-      const newDisassembledItems = action.payload.filter(newItem => !state.disassembledIems.some(existingItem => existingItem.name === newItem.name));
-      state.disassembledIems.push(...newDisassembledItems);
+      const newDisassembledItems = action.payload.filter(newItem => !state.disassembledItems.some(existingItem => existingItem.name === newItem.name));
+      state.disassembledItems.push(...newDisassembledItems);
     },
 
     changeDisassembledItemQuantity: (state, action) => {
       const { name, change } = action.payload;
       const disassembledItemIndex = state.disassembledItems.findIndex(item => item.name === name);
       if (disassembledItemIndex !== -1) {
-        state.disassembledIems[disassembledItemIndex].quantity += change;
+        state.disassembledItems[disassembledItemIndex].quantity += change;
       }
     },
 
     removeDisassembledItem: (state, action) => {
       const {item} = action.payload;
-      state.disassembledIems = state.disassembledIems.filter(i => i.name !== item.name);
+      state.disassembledItems = state.disassembledItems.filter(i => i.name !== item.name);
     },
 
     addCraneItems: (state, action) => {
@@ -174,6 +175,9 @@ export const mainSlice = createSlice({
       let distancePrice = 0;
       let boxesPrice = 0;
       let itemsPrice = 0;
+
+
+      getDistance(baseline.address, destination.address)
     
       // Calculate total price for items
       if (state.items) {

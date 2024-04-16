@@ -9,10 +9,10 @@ import { FaCirclePlus } from "react-icons/fa6";
 
 const Disassemble = () => {
     const items = useSelector(state => state.items.items);   
-    const disassembledIems = useSelector(state => state.items.disassembledIems)
+    const disassembledItems = useSelector(state => state.items.disassembledItems)
     const [toggle, setToggle] = useState(false)
     const [listToggle, setListToggle] = useState(false)
-    const [disassembleItems, setDisasembleItems] = useState(disassembledIems)
+    const [disassembleItems, setDisasembleItems] = useState(disassembledItems)
     const dispatch = useDispatch()
     
     const handleItemSelect = index => {

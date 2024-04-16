@@ -2,7 +2,7 @@ import React, { useState, useEffect} from 'react'
 import { IoIosAdd } from "react-icons/io";
 import { RiSubtractFill } from "react-icons/ri";
 import { useSelector, useDispatch } from 'react-redux';
-import { addAssembledItems, changeAssembledItemQuantity, removeAssembledItem } from '../slices/slices';
+import { addPackagedItems, changePackagedItemQuantity, removePackagedItem } from '../slices/slices';
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 
@@ -37,7 +37,7 @@ const Packaging = () => {
                     const maxQuantity = items.find(i => i.name === name).quantity;
                     const updatedQuantity = Math.min(item.quantity + change, maxQuantity);
                     if (updatedQuantity <= 0) {
-                        dispatch(removeAssembledItem({ item }));
+                        dispatch(removePackagedItem({ item }));
                         return null; // Returning null to be filtered out later
                     }
                     return { ...item, quantity: updatedQuantity };
@@ -47,14 +47,14 @@ const Packaging = () => {
     
             return newItems.filter(item => item !== null && item.quantity > 0); // Filtering out null items
         });
-        dispatch(changeAssembledItemQuantity({ name, change }));
+        dispatch(changePackagedItemQuantity({ name, change }));
 
     };
     
     
 
     useEffect(() => {
-        dispatch(addAssembledItems(packageItems))
+        dispatch(addPackagedItems(packageItems))
     }, [packageItems, dispatch])
     
     
