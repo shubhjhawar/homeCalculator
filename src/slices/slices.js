@@ -24,6 +24,11 @@ const initialState = {
     endDay: '',
   },
   craneItems: [],
+  totalPrice: 0,
+  servicesPrice: 0,
+  distancePrice: 0,
+  boxesPrice: 0,
+  itemsPrice:0
 };
 
 export const mainSlice = createSlice({
@@ -160,6 +165,82 @@ export const mainSlice = createSlice({
       state.storagePeriod.endDay = action.payload;
     },
     
+    calculate: (state, action) => {
+      const { baseline, destination, boxes, packagedItems, assembledItems, disassembledItems, storageItems, craneItems } = action.payload;
+    
+      // Calculate total price for all items
+      let totalPrice = 0;
+      let servicesPrice = 0;
+      let distancePrice = 0;
+      let boxesPrice = 0;
+      let itemsPrice = 0;
+    
+      // Calculate total price for items
+      if (state.items) {
+        state.items.forEach(item => {
+          itemsPrice += item.quantity * item.price;
+        });
+      }
+    
+      // Calculate total price for packaged items
+      if (packagedItems) {
+        packagedItems.forEach(item => {
+          servicesPrice += item.quantity * item.price;
+        });
+      }
+    
+      // Calculate total price for assembled items
+      if (assembledItems) {
+        assembledItems.forEach(item => {
+          servicesPrice += item.quantity * item.price;
+        });
+      }
+    
+      // Calculate total price for disassembled items
+      if (disassembledItems) {
+        disassembledItems.forEach(item => {
+          servicesPrice += item.quantity * item.price;
+        });
+      }
+    
+      // Calculate total price for storage items
+      if (storageItems) {
+        storageItems.forEach(item => {
+          servicesPrice += item.quantity * item.price;
+        });
+      }
+    
+      // Calculate total price for crane items
+      if (craneItems) {
+        craneItems.forEach(item => {
+          servicesPrice += item.quantity * item.price;
+        });
+      }
+    
+      // Calculate total cost based on boxes (each box costs $15)
+      boxesPrice = boxes * 15;
+    
+      // Calculate additional cost based on elevator for baseline floor
+      let additionalCostBaseline = 0;
+      if (baseline && baseline.elevator === 'no') {
+        additionalCostBaseline = totalPrice * (baseline.floor * 0.1); // 10% additional cost for each baseline floor
+      }
+    
+      // Calculate additional cost based on elevator for destination floor
+      let additionalCostDestination = 0;
+      if (destination && destination.elevator === 'no') {
+        additionalCostDestination = totalPrice * (destination.floor * 0.1); // 10% additional cost for each destination floor
+      }
+
+      distancePrice += additionalCostBaseline + additionalCostDestination
+    
+      // Calculate total price including additional costs
+      totalPrice += itemsPrice + servicesPrice + distancePrice + boxesPrice;
+    
+      // Return the calculated result
+      return { ...state, totalPrice: totalPrice, distancePrice: distancePrice, itemsPrice:itemsPrice, boxesPrice:boxesPrice, servicesPrice:servicesPrice };
+    }
+    
   },
 });
 
@@ -179,6 +260,7 @@ export const {
   removeStorageItem,
   setStorageStartDay,
   setStorageEndDay,
+  calculate
 
 } = mainSlice.actions;
 

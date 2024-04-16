@@ -22,5 +22,6 @@ import progress_bar_items from "./progress_bar_items.png"
 import progress_bar_baseline from "./progress_bar_baseline.png"
 import progress_bar_destination from "./progress_bar_destination.png"
 import services_bg from "./services_bg.png"
+import extra from "./extra.png"
 
-export {home_bg, cloud, cloudleft, truck, sun, hotairballoon, grayslab, grass, marker, rocket, arrow, items_bg, add, minus, newCloud, boxes_img, cute_boxes, progress_bar, carousel_arrow, progress_bar_services, progress_bar_items, progress_bar_baseline, progress_bar_destination, services_bg}
+export {home_bg, cloud, cloudleft, truck, sun, hotairballoon, grayslab, grass, marker, rocket, arrow, items_bg, add, minus, newCloud, boxes_img, cute_boxes, progress_bar, carousel_arrow, progress_bar_services, progress_bar_items, progress_bar_baseline, progress_bar_destination, services_bg, extra}
