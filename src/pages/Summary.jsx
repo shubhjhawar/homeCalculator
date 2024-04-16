@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { carousel_arrow } from '../assets';
-import { boxes_img } from '../assets';
+import { boxes_img, carousel_arrow } from '../assets';
 import Details from '../components/Details';
 import Table from '../components/Table';
-import { useSelector } from 'react-redux';
+import Final from '../components/Final';
+import Data from '../components/Data';
 
 
 const Summary = () => {
   const [toggle, setToggle] = useState(2)
-  const price = useSelector(state => state.items.totalPrice)
 
 
   return (
@@ -24,14 +23,8 @@ const Summary = () => {
       <div className="flex items-center absolute top-8 max-lg:right-5 right-20 max-md:w-20 max-md:h-20 w-24 h-24 bg-red-500 rounded-full font-semibold shadow-2xl p-5 text-white text-2xl max-md:text-lg">צור מכרז</div>
 
       {toggle === 2 && (
-        <div className='flex flex-col items-center justify-center gap-3 mt-10'>
-          <div className='py-5 text-3xl font-semibold'>סה"כ עלויות הובלה</div>
-          <div className='text-7xl font-semibold'>{price} ₪</div>
-
-          {/* Dotted grey box */}
-          <div className="border-dashed border border-gray-500 mt-6 p-4 max-w-2xl" style={{ borderWidth: '2px', borderStyle: 'dashed', borderRadius: '8px' }}>
-          המחיר המוצג הוא המחיר המקסימלי עבור ההובלה הזאת.ניתן להוזיל את עלות ההובלה ב - 20% - 30% אחוז ע”י יצירת מכרז בין חברות הובלה.בעת פתיחת מכרז, חברות הובלה מקבלות את פרטי ההובלה שלכם, ומציעים מחירים תחרותיים.אתם תקבלו את המחירים ישירות לווצאפ, ותוכלו לבחור את ההצעה הטובה ביותר עבורכם.רק ברגע שהסכמתם לקבל פנייה הפרטים שלכם יעברו לחברת הובלות.
-          </div>
+        <div className='flex flex-col items-center justify-center gap-3'>
+          <Final />
         </div>
       )}
 
@@ -43,8 +36,8 @@ const Summary = () => {
       )}
 
       {toggle === 0 && (
-        <div className='flex flex-col items-center justify-center gap-3 mt-10'>
-          <Details />
+        <div className='w-2/3 flex flex-col items-center justify-center gap-3 mt-10'>
+          <Data />
         </div>
       )}
 

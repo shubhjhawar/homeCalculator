@@ -27,5 +27,12 @@ import pin from "./pin.png"
 import couch from "./couch.png"
 import box from "./box.png"
 import services from "./services.png"
+import sum1 from "./sum1.png"
+import sum2 from "./sum2.png"
+import sum3 from "./sum3.png"
+import sum4 from "./sum4.png"
+import sum5 from "./sum5.png"
+import arrow1 from "./arrow1.png"
 
-export {home_bg, cloud, cloudleft, truck, sun, hotairballoon, grayslab, grass, marker, rocket, arrow, items_bg, add, minus, newCloud, boxes_img, cute_boxes, progress_bar, carousel_arrow, progress_bar_services, progress_bar_items, progress_bar_baseline, progress_bar_destination, services_bg, extra, box, services, couch, pin}
+
+export {home_bg, cloud, cloudleft, arrow1, truck, sun, hotairballoon, grayslab, grass, marker, rocket, arrow, items_bg, add, minus, newCloud, boxes_img, cute_boxes, progress_bar, carousel_arrow, progress_bar_services, progress_bar_items, progress_bar_baseline, progress_bar_destination, services_bg, extra, box, services, couch, pin, sum1, sum2, sum3, sum4, sum5}

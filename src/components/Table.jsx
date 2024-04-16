@@ -27,7 +27,7 @@ const Table = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="hidden lg:block w-full">
       <div className="w-full grid grid-cols-10 bg-blue-200 bg-[#ffffff] rounded-t-md p-2">
         <div className='w-full flex flex-col items-center justify-center'>Total costs</div>
         <div className="col-span-7">

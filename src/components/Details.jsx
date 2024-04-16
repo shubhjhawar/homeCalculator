@@ -8,7 +8,7 @@ const Details = () => {
   const distancePrice = useSelector(state => state.items.distancePrice)
   const boxesPrice = useSelector(state => state.items.boxesPrice)
   return (
-    <div className='w-full flex flex-wrap justify-evenly gap-2'>
+    <div className='w-full flex flex-wrap justify-evenly gap-2 mb-5'>
       <div className="w-[200px] bg-white rounded-md p-8 flex flex-col items-center gap-2">
         <h2 className='font-semibold text-lg'>שירותים נוספים</h2>
         <img src={services} alt="services"/>
