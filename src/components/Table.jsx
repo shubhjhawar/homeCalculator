@@ -28,12 +28,11 @@ const Table = () => {
 
   return (
     <div className="hidden lg:block w-full">
-      <div className="w-full grid grid-cols-10 bg-blue-200 bg-[#ffffff] rounded-t-md p-2">
+      <div className="w-full grid grid-cols-9 bg-blue-200 bg-gray-100 rounded-t-md p-2">
         <div className='w-full flex flex-col items-center justify-center'>Total costs</div>
-        <div className="col-span-7">
+        <div className="col-span-6">
           <h2 className='w-full flex flex-col items-center'>Extras</h2>
-          <div className='grid grid-cols-7'>
-            <p className='flex flex-col items-center'>store</p>
+          <div className='grid grid-cols-6'>
             <p className='flex flex-col items-center'>crane</p>
             <p className='flex flex-col items-center'>packing</p>
             <p className='flex flex-col items-center'>disassembly</p>
@@ -48,8 +47,7 @@ const Table = () => {
       {items.map((item, index) => (
         <div key={index} className="w-full grid grid-cols-10 bg-transparent p-2 border-[1px] border-gray-500">
           <div className='flex flex-col items-center'>{getTotalCost(item)}</div>
-          <div className="col-span-7 grid grid-cols-7 flex">
-            <div className='flex flex-col items-center'>s</div>
+          <div className="col-span-6 grid grid-cols-6 flex">
             <div className='flex flex-col items-center'>c</div>
             <div className='flex flex-col items-center'>{packagedItems.some(packagedItem => packagedItem.name === item.name) ? item.price : 0}</div>
             <div className='flex flex-col items-center'>

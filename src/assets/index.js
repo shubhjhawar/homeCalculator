@@ -33,6 +33,10 @@ import sum3 from "./sum3.png"
 import sum4 from "./sum4.png"
 import sum5 from "./sum5.png"
 import arrow1 from "./arrow1.png"
+import text1 from "./text1.png"
+import text2 from "./text2.png"
+import text3 from "./text3.png"
+import text4 from "./text4.png"
 
 
-export {home_bg, cloud, cloudleft, arrow1, truck, sun, hotairballoon, grayslab, grass, marker, rocket, arrow, items_bg, add, minus, newCloud, boxes_img, cute_boxes, progress_bar, carousel_arrow, progress_bar_services, progress_bar_items, progress_bar_baseline, progress_bar_destination, services_bg, extra, box, services, couch, pin, sum1, sum2, sum3, sum4, sum5}
+export {home_bg, cloud, cloudleft, arrow1, text1, text2, text3, text4, truck, sun, hotairballoon, grayslab, grass, marker, rocket, arrow, items_bg, add, minus, newCloud, boxes_img, cute_boxes, progress_bar, carousel_arrow, progress_bar_services, progress_bar_items, progress_bar_baseline, progress_bar_destination, services_bg, extra, box, services, couch, pin, sum1, sum2, sum3, sum4, sum5}
