@@ -37,6 +37,10 @@ import text1 from "./text1.png"
 import text2 from "./text2.png"
 import text3 from "./text3.png"
 import text4 from "./text4.png"
+import parcel from "./parcel.png"
+import firstballoon from "./firstballoon.png"
+import secondballoon from "./secondballoon.png"
+import thirdballoon from "./thirdballoon.png"
 
 
-export {home_bg, cloud, cloudleft, arrow1, text1, text2, text3, text4, truck, sun, hotairballoon, grayslab, grass, marker, rocket, arrow, items_bg, add, minus, newCloud, boxes_img, cute_boxes, progress_bar, carousel_arrow, progress_bar_services, progress_bar_items, progress_bar_baseline, progress_bar_destination, services_bg, extra, box, services, couch, pin, sum1, sum2, sum3, sum4, sum5}
+export {home_bg, cloud, cloudleft, firstballoon, secondballoon, thirdballoon, parcel, arrow1, text1, text2, text3, text4, truck, sun, hotairballoon, grayslab, grass, marker, rocket, arrow, items_bg, add, minus, newCloud, boxes_img, cute_boxes, progress_bar, carousel_arrow, progress_bar_services, progress_bar_items, progress_bar_baseline, progress_bar_destination, services_bg, extra, box, services, couch, pin, sum1, sum2, sum3, sum4, sum5}

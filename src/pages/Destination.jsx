@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { grass, grayslab, marker, rocket, progress_bar_destination } from '../assets';
-import "../styles/rocket.css";
+import { grass, grayslab, firstballoon, secondballoon, thirdballoon, progress_bar_destination } from '../assets';
+import "../styles/parcel.css";
 import "../styles/buttons.css";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
@@ -132,8 +132,9 @@ const Destination = () => {
 
       {/* base */}
       <div className="flex flex-col items-center md:h-[150px] relative">
-        <img src={rocket} alt="rocket" className="rocket-animation absolute bottom-14 left-10 w-26 h-40 max-md:w-24 max-md:h-24 z-10" />
-        <img src={marker} alt="marker" className='absolute bottom-14 right-10 w-26 h-40 max-md:w-14 max-md:h-24 z-30'/>
+        <img src={firstballoon} alt="firstballoon" className='parcel-animation absolute bottom-14 right-[100px] z-30'/>
+        <img src={thirdballoon} alt="thirdballoon" className='parcel-animation absolute bottom-14 right-[50px] z-30'/>
+        <img src={secondballoon} alt="secondballoon" className='parcel-animation absolute bottom-14 right-[10px] z-30'/>
         <img src={grass} alt="grass" className='z-20'/>
         <img src={grayslab} alt="grayslab" className='z-20'/>
       </div>

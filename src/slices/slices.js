@@ -4,13 +4,13 @@ import { getDistance } from '../utils';
 const initialState = {
   items: [],
   baseline: {
-    address: '',
+    address: '956 Richmond St, London, ON N6A 3J5, Canada',
     floor: '1',
     elevator: false,
     truckAccess: 'easy'
   },
   destination: {
-    address: '',
+    address: '534 Blackwater Pl, London, ON N5X 4J4, Canada',
     floor: '1',
     elevator: false,
     truckAccess: 'easy'
@@ -177,7 +177,7 @@ export const mainSlice = createSlice({
       let itemsPrice = 0;
 
 
-      getDistance(baseline.address, destination.address)
+      getDistance()
     
       // Calculate total price for items
       if (state.items) {
