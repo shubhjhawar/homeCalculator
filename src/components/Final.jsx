@@ -23,34 +23,34 @@ const Final = () => {
           </div>
 
           <h4 className='underline'>איך זה עובד?</h4>
-          <div className='w-full flex gap-2 items-center justify-content mb-5'>
+          <div className="w-full flex flex-col gap-4 md:flex-row md:flex-wrap items-center justify-content mb-5">
             <div className='bg-white rounded-md p-4 w-[150px] flex flex-col items-center gap-4'>
               <img src={sum1} alt="sum1" />
               <p className='text-sm text-center'>מבצעים את ההובלה ומשאירים ביקורת על החוויה :)</p>
             </div>
 
-            <img src={arrow1} alt="arrow" />
-
+            <img src={arrow1} alt="arrow" className="md:block hidden"/>
+  
             <div className='bg-white rounded-md p-4 w-[150px] flex flex-col items-center gap-4'>
               <img src={sum2} alt="sum2" />
               <p className='text-sm text-center'>מבצעים את ההובלה ומשאירים ביקורת על החוויה :)</p>
             </div>
 
-            <img src={arrow1} alt="arrow" />
+            <img src={arrow1} alt="arrow" className="md:block hidden"/>
 
             <div className='bg-white rounded-md p-4 w-[150px] flex flex-col items-center gap-4'>
               <img src={sum3} alt="sum3" />
               <p className='text-sm text-center'>מבצעים את ההובלה ומשאירים ביקורת על החוויה :)</p>
             </div>
 
-            <img src={arrow1} alt="arrow" />
+            <img src={arrow1} alt="arrow" className="md:block hidden"/>
 
             <div className='bg-white rounded-md p-4 w-[150px] flex flex-col items-center gap-4'>
               <img src={sum4} alt="sum4" />
               <p className='text-sm text-center'>מבצעים את ההובלה ומשאירים ביקורת על החוויה :)</p>
             </div>
 
-            <img src={arrow1} alt="arrow" />
+            <img src={arrow1} alt="arrow" className="md:block hidden"/>
 
             <div className='bg-white rounded-md p-4 w-[150px] flex flex-col items-center gap-4'>
               <img src={sum5} alt="sum5" />
