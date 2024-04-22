@@ -12,8 +12,8 @@ const Summary = () => {
 
 
   return (
-    <div className="fixed bottom-0 w-full z-50 h-full flex flex-col justify-between items-center pt-10 overflow-auto">
-      <div className="flex max-md:flex-col gap-6 text-neutral-50 text-xl text-center">
+    <div className="relative flex flex-col justify-center items-center h-full py-12">
+      <div className="flex flex-col md:flex-row gap-6 text-neutral-50 text-xl text-center">
         <button onClick={()=>setToggle(0)} className={`w-40 h-auto ${toggle===0 ? 'bg-orange-400' : ' bg-gray-400'} p-2 rounded-lg font-semibold`}>המלצות לחיסכון בעלויות</button>
         <button onClick={()=>setToggle(1)} className={`w-40 h-auto ${toggle===1 ? 'bg-orange-400' : ' bg-gray-400'} p-2 rounded-lg font-semibold`}>פירוט עלויות</button>
         <button onClick={()=>setToggle(2)} className={`w-40 h-auto ${toggle===2 ? 'bg-orange-400' : ' bg-gray-400'} p-2 rounded-lg font-semibold`}>סיכום הזמנה</button>
@@ -42,7 +42,7 @@ const Summary = () => {
       )}
 
       {/* Button with right arrow */}
-      <div className="absolute top-1/2 right-8 transform -translate-y-1/2 hidden lg:block">
+      <div className="absolute top-1/2 right-8 transform -translate-y-1/2 hidden md:block">
         <Link to="/summary">
           <img src={carousel_arrow} alt="Button with right arrow" />
         </Link>
