@@ -15,3 +15,20 @@ export async function getDistance() {
         return null;
     }
 }
+
+
+export const calculateCranePrice = (floorCount) => {
+    // Base price for up to the 5th floor
+    let basePrice = 400;
+    
+    // Price for each additional floor above the 5th floor
+    const additionalPricePerFloor = 50;
+    
+    // Calculate the total price based on the floor count
+    if (floorCount > 5) {
+        basePrice += (floorCount - 5) * additionalPricePerFloor;
+    }
+    
+    // Double the price if there are multiple points
+    return basePrice
+};

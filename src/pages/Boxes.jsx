@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { boxes_img, cute_boxes, progress_bar, carousel_arrow } from '../assets';
 import Cloud from '../components/Cloud';
 import MovingTruck from '../components/MovingTruck';
@@ -99,7 +99,7 @@ const Boxes = () => {
 
         {/* Button with right arrow */}
         <div className="absolute top-1/2 right-8 transform -translate-y-1/2 hidden md:block">
-         <Link to="/summary">
+         <Link to="/services">
         <img src={carousel_arrow} alt="Button with right arrow" />
       </Link>
       </div>

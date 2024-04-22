@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getDistance } from '../utils';
+import { calculateCranePrice, getDistance } from '../utils';
 
 const initialState = {
   items: [],
@@ -123,9 +123,15 @@ export const mainSlice = createSlice({
     },
 
     addCraneItems: (state, action) => {
-      const newCraneItems = action.payload.filter(newItem => !state.craneItems.some(existingItem => existingItem.name === newItem.name));
+      const newCraneItems = action.payload
+        .filter(newItem => !state.craneItems.some(existingItem => existingItem.name === newItem.name))
+        .map(newItem => ({
+          ...newItem,
+          price: calculateCranePrice(parseInt(state.baseline.floor)) + calculateCranePrice(parseInt(state.destination.floor))
+        }));
       state.craneItems.push(...newCraneItems);
     },
+    
 
     changeCraneItemQuantity: (state, action) => {
       const { name, change } = action.payload;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { boxes_img, carousel_arrow } from '../assets';
 import Details from '../components/Details';
