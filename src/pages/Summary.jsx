@@ -55,12 +55,7 @@ const Summary = () => {
             </div>
           )}
 
-          {/* Button with right arrow */}
-          <div className="absolute top-1/2 right-8 transform -translate-y-1/2 hidden lg:block">
-            <Link to="/summary">
-              <img src={carousel_arrow} alt="Button with right arrow" />
-            </Link>
-          </div>
+          
 
           {/* Background image */}
           <img src={boxes_img} alt="background" className='w-full' />
