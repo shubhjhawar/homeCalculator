@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { boxes_img, cute_boxes, progress_bar, carousel_arrow } from '../assets';
 import Cloud from '../components/Cloud';
 import MovingTruck from '../components/MovingTruck';
@@ -26,11 +26,11 @@ const Boxes = () => {
 
       </div>
       <div className='text-center'>
-        <h1 className='mt-20 font-semibold text-3xl'>הוסף ארגזים למשאית שלך</h1>
+        <h1 className='mt-20 font-semibold text-3xl px-3'>הוסף ארגזים למשאית שלך</h1>
         <p className='mt-6'> (; שקיות נחשבות גם ארגזים</p>
         
        {/* Progress bar */}
-       <div className="flex justify-center items-center mt-8">
+       <div className="flex justify-center items-center mt-8 px-3">
        <p className='mr-8 font-medium'>  אין לי בכלל</p>
         <div>
           
@@ -84,21 +84,21 @@ const Boxes = () => {
       </div>
       
       <div>
-        <div className="absolute top-[320px] left-20 max-md:left-[20px] w-24 h-12">
+        <div className="absolute top-[320px] left-20 max-md:left-[20px] w-24 h-12 md:block hidden">
           <Cloud />
         </div>
         <div onClick={()=>dispatch(addBoxes(progress))}>
           <MovingTruck link="/services" />
         </div>
         {/* Background image */}
-        <img src={boxes_img} alt="background" className='absolute bottom-0 w-full h-1/3 max-md:w-14 max-md:h-24 z-30' />
+        <img src={boxes_img} alt="background" className='absolute bottom-0 w-full h-1/3 z-30' />
 
         {/* Cute boxes component */}
-        <img src={cute_boxes} alt="cute boxes" className='absolute bottom-0 right-36 h-1/2 z-40 mb-16' />
+      <img src={cute_boxes} alt="cute boxes" className='absolute bottom-0 right-36 h-1/2 z-40 mb-16 hidden lg:block' />
         </div>
 
         {/* Button with right arrow */}
-      <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
+      <div className="absolute top-1/2 right-8 transform -translate-y-1/2 md:block hidden">
        <Link to="/services">
         <img src={carousel_arrow} alt="Button with right arrow" />
       </Link>

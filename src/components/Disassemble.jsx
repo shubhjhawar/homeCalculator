@@ -4,13 +4,15 @@ import { RiSubtractFill } from "react-icons/ri";
 import { useSelector, useDispatch } from 'react-redux';
 import { addDisassembledItems, changeDisassembledItemQuantity, removeDisassembledItem } from '../slices/slices';
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { FaCirclePlus } from "react-icons/fa6";
+
 
 const Disassemble = () => {
     const items = useSelector(state => state.items.items);   
-    const disassembledIems = useSelector(state => state.items.disassembledIems)
+    const disassembledItems = useSelector(state => state.items.disassembledItems)
     const [toggle, setToggle] = useState(false)
     const [listToggle, setListToggle] = useState(false)
-    const [disassembleItems, setDisasembleItems] = useState(disassembledIems)
+    const [disassembleItems, setDisasembleItems] = useState(disassembledItems)
     const dispatch = useDispatch()
     
     const handleItemSelect = index => {
@@ -91,29 +93,33 @@ const Disassemble = () => {
                 </div>
               </div>
             ))}
-            <button className='flex gap-2' onClick={()=>setListToggle((prev)=>!prev)}>
-                <span>Word</span>
-                <span>Icon</span>
+            <button className='flex gap-2 items-center justify-end' onClick={()=>setListToggle((prev)=>!prev)}>
+                <span>הוסף פריטים</span>
+                <span>
+                    <FaCirclePlus className='text-blue-500' />
+                </span>
             </button>
         </div>
-        <div className={`${listToggle ? 'block' : 'hidden'} flex flex-col w-full justify-center items-center gap-2 mt-4 border-[1px] border-gray-200 rounded-t-md max-h-[100px] overflow-auto`}>
+        <div className={`${listToggle ? 'block' : 'hidden'} flex flex-col w-full justify-center items-center gap-2 mt-4 border-[1px] border-gray-200 rounded-t-md max-h-[200px]`}>
             <div className="flex flex-col justify-end w-full">
                 <div className="mt-2 flex gap-2 items-center justify-end w-full hover:bg-gray-100 cursor-pointer pr-2" onClick={()=>handleSelectAll()}>Select all</div>
-                {items.map((item, index) => {
-                    const isSelected = disassembleItems.some(selectedItem => selectedItem.name === item.name);
-                    return(
-                        <div className="flex gap-2 items-center justify-end w-full hover:bg-gray-100 cursor-pointer" onClick={()=>handleItemSelect(index)}>
-                            <p className="mr-2">
-                                {item.name}
-                            </p>
-                            {isSelected && (
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
-                                <path fill="#7F56D9" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z" />
-                            </svg>
-                            )}
-                        </div>
-                    )
-                })}
+                <div className="max-h-[150px] overflow-y-auto">
+                    {items.map((item, index) => {
+                        const isSelected = disassembleItems.some(selectedItem => selectedItem.name === item.name);
+                        return(
+                            <div className="flex gap-2 items-center justify-end w-full hover:bg-gray-100 cursor-pointer" onClick={()=>handleItemSelect(index)}>
+                                <p className="mr-2">
+                                    {item.name}
+                                </p>
+                                {isSelected && (
+                                <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" viewBox="0 0 24 24">
+                                    <path fill="#7F56D9" d="M21 7L9 19l-5.5-5.5l1.41-1.41L9 16.17L19.59 5.59z" />
+                                </svg>
+                                )}
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </div>
         <div className={`${listToggle ? 'block' : 'hidden'} w-full border-[1px] border-gray-200 rounded-b-md p-4 flex justify-center`}>

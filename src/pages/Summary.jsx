@@ -1,37 +1,68 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { carousel_arrow } from '../assets';
-
-import { boxes_img } from '../assets';
+import { boxes_img, carousel_arrow } from '../assets';
+import Details from '../components/Details';
+import Table from '../components/Table';
+import Final from '../components/Final';
+import Data from '../components/Data';
+import Form from "../components/Form";
 
 const Summary = () => {
+  const [toggle, setToggle] = useState(2);
+  const [form, setForm] = useState(false);
+
+  const toggleForm = () => {
+    setForm(true);
+  };
+
+  const toggleSummary = () => {
+    setForm(false);
+  };
+
   return (
-    <div className="relative flex flex-col justify-center items-center h-full py-12">
-      <div className="flex gap-6 text-neutral-50 text-xl text-center">
-        <div className="w-40 h-auto bg-gray-400 p-2 rounded-2xl font-semibold">המלצות לחיסכון בעלויות</div>
-        <div className="w-40 h-auto bg-gray-400 p-5 rounded-2xl font-semibold">פירוט עלויות</div>
-        <div className="w-auto h-auto bg-orange-400 p-5 rounded-2xl font-semibold">סיכום הזמנה</div>
+    <div className="fixed bottom-0 w-full z-50 h-full flex flex-col justify-between items-center pt-10 overflow-auto">
+      <div className="flex max-md:flex-col gap-6 text-neutral-50 text-xl text-center max-md:mt-14">
+        {!form && (
+          <>
+            <button onClick={() => setToggle(0)} className={`w-40 h-auto ${toggle === 0 ? 'bg-orange-400' : ' bg-gray-400'} p-2 rounded-lg font-semibold`}>המלצות לחיסכון בעלויות</button>
+            <button onClick={() => setToggle(1)} className={`w-40 h-auto ${toggle === 1 ? 'bg-orange-400' : ' bg-gray-400'} p-2 rounded-lg font-semibold`}>פירוט עלויות</button>
+            <button onClick={() => setToggle(2)} className={`w-40 h-auto ${toggle === 2 ? 'bg-orange-400' : ' bg-gray-400'} p-2 rounded-lg font-semibold`}>סיכום הזמנה</button>
+          </>
+        )}
       </div>
 
-      {/* Red circle with outer shadow */}
-      <div className="absolute top-8 right-20 w-24 h-24 bg-red-500 rounded-full font-semibold shadow-2xl p-5 text-white text-2xl">צור מכרז</div>
+      {!form && (
+        <>
+          {/* Red circle with outer shadow */}
+          <div className="flex items-center absolute top-8 max-lg:right-5 right-20 max-md:w-14 max-md:h-14 w-20 h-20 bg-red-500 rounded-full font-semibold shadow-2xl p-5 max-md:p-3 text-white text-lg max-md:text-sm" onClick={toggleForm}>צור מכרז</div>
 
-      <div className='py-5 text-3xl font-semibold'>סה"כ עלויות הובלה</div>
-      <div className='text-7xl font-semibold'>650 ₪</div>
+          {toggle === 2 && (
+            <div className='flex flex-col items-center justify-center gap-3'>
+              <Final />
+            </div>
+          )}
 
-      {/* Dotted grey box */}
-      <div className="border-dashed border border-gray-500 mt-6 p-4 max-w-2xl" style={{ borderWidth: '2px', borderStyle: 'dashed', borderRadius: '8px' }}>
-      המחיר המוצג הוא המחיר המקסימלי עבור ההובלה הזאת. ניתן להוזיל את עלות ההובלה ב - 20% - 30% אחוז ע”י יצירת מכרז בין חברות הובלה. בעת פתיחת מכרז, חברות הובלה מקבלות את פרטי ההובלה שלכם, ומציעים מחירים תחרותיים. אתם תקבלו את המחירים ישירות לווצאפ, ותוכלו לבחור את ההצעה הטובה ביותר עבורכם. רק ברגע שהסכמתם לקבל פנייה הפרטים שלכם יעברו לחברת הובלות.
-      </div>
-      {/* Background image */}
-      <img src={boxes_img} alt="background" className='h-1/4 bottom-0 w-full max-md:w-14 max-md:h-24' />
+          {toggle === 1 && (
+            <div className='flex flex-col items-center justify-center gap-3 mt-10'>
+              <Details />
+              <Table />
+            </div>
+          )}
 
-       {/* Button with right arrow */}
-       <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
-       <Link to="/summary">
-        <img src={carousel_arrow} alt="Button with right arrow" />
-      </Link>
-      </div>  
+          {toggle === 0 && (
+            <div className='w-2/3 flex flex-col items-center justify-center gap-3 mt-10'>
+              <Data />
+            </div>
+          )}
+
+          
+
+          {/* Background image */}
+          <img src={boxes_img} alt="background" className='w-full' />
+        </>
+      )}
+
+      {form && <Form toggleSummary={toggleSummary} />}
     </div>
   );
 };

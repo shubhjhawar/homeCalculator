@@ -1,0 +1,17 @@
+/* Add this CSS to your stylesheet or component */
+@keyframes parcelLanding {
+    0% {
+      transform: translateY(-400%) translateX(0%);
+    }
+    /* 50% {
+      transform: translateY(-50%) translateX(50%) rotate(40deg);
+    } */
+    100% {
+      transform: translateY(0) translateX(-40%);
+    }
+  }
+    
+  .parcel-animation {
+      animation: parcelLanding 4s forwards; /* Adjust the duration as needed */
+  }
+    
