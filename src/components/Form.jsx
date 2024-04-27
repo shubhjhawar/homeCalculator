@@ -94,11 +94,11 @@ const Form = ({ toggleSummary }) => {
                   <div className="flex mb-6">
                     <div className="mr-8">
                       <label htmlFor="hoursRange" className="block mb-1 text-right">טווח שעות</label>
-                      <input type="text" id="hoursRange" className="w-64 h-10 border rounded p-1 text-right" placeholder='9:00-12:00' value={formData.hoursRange} onChange={handleChange} />
+                      <input type="time" id="hoursRange" className="w-64 h-10 border rounded p-1 text-right" placeholder='9:00-12:00' value={formData.hoursRange} onChange={handleChange} />
                     </div>
                     <div>
                       <label htmlFor="movingDate" className="block mb-1 text-right">תאריך הובלה</label>
-                      <input type="text" id="movingDate" className="w-64 h-10 border rounded p-1 text-right" placeholder='13/10/2024' value={formData.movingDate} onChange={handleChange} />
+                      <input type="date" id="movingDate" className="w-64 h-10 border rounded p-1 text-right" placeholder='13/10/2024' value={formData.movingDate} onChange={handleChange} />
                     </div>
                   </div>
                   <div className="mb-6">
