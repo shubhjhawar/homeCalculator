@@ -9,7 +9,10 @@ const Form = ({ toggleSummary }) => {
   const [formData, setFormData] = useState({
     phoneNumber: '',
     fullName: '',
-    hoursRange: '',
+    hours: {
+      hoursRangeStart: '',
+      hoursRangeEnd: '',
+    },
     movingDate: '',
     additionalDetails: ''
   });
@@ -23,7 +26,7 @@ const Form = ({ toggleSummary }) => {
     const emailPayload = {
       phoneNumber: formData.phoneNumber,
       fullName: formData.fullName,
-      hoursRange: formData.hoursRange,
+      hoursRange: formData.hours,
       movingDate: formData.movingDate,
       additionalDetails: formData.additionalDetails,
       movingDetails: state
@@ -34,8 +37,20 @@ const Form = ({ toggleSummary }) => {
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
+    if (id === 'hoursRangeStart' || id === 'hoursRangeEnd') {
+      setFormData({
+        ...formData,
+        hours: {
+          ...formData.hours,
+          [id]: value
+        }
+      });
+    } else {
+      setFormData({ ...formData, [id]: value });
+    }
   };
+
+  
 
   const handleArrowClick = () => {
     // Redirect to the summary page
@@ -93,8 +108,9 @@ const Form = ({ toggleSummary }) => {
                   </div>
                   <div className="flex mb-6">
                     <div className="mr-8">
-                      <label htmlFor="hoursRange" className="block mb-1 text-right">טווח שעות</label>
-                      <input type="time" id="hoursRange" className="w-64 h-10 border rounded p-1 text-right" placeholder='9:00-12:00' value={formData.hoursRange} onChange={handleChange} />
+                      <label htmlFor="hours" className="block mb-1 text-right">טווח שעות</label>
+                      <input type="time" id="hoursRangeStart" className="w-32 h-10 border rounded p-1 text-right" value={formData.hours.hoursRangeStart} onChange={handleChange} />
+                      <input type="time" id="hoursRangeEnd" className="w-32 h-10 border rounded p-1 text-right" value={formData.hours.hoursRangeEnd} onChange={handleChange} />
                     </div>
                     <div>
                       <label htmlFor="movingDate" className="block mb-1 text-right">תאריך הובלה</label>
