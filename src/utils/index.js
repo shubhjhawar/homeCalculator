@@ -9,7 +9,7 @@ export async function getDistance() {
 		const baselineAddress = "956 Richmond St, London, ON N6A 3J5, Canada";
 		const destinationAddress =
 			"534 Blackwater Pl, London, ON N5X 4J4, Canada";
-		const apiUrl = `http://localhost:3000/distance`;
+		const apiUrl = `${import.meta.env.API_URL}/distance`; 
 
 		const response = await axios.get(apiUrl, {
 			params: {
