@@ -8,14 +8,18 @@ import Disassemble from '../components/Disassemble';
 import Crane from '../components/Crane';
 import Storage from '../components/Storage';
 import { progress_bar_services, services_bg } from '../assets';
+import { getDistance } from '../utils';
 
 const Services = () => {
   const dispatch = useDispatch();
-  const items = useSelector(state => state.items.items);
+  // const items = useSelector(state => state.items.items);
   const state = useSelector(state => state.items);
 
-  const handleCalculate = () => {
-    dispatch(calculate(state));
+  const handleCalculate = async () => {
+      const distance = await getDistance(state.baseline.address, state.destination.address);
+      if (distance !== null) {
+        dispatch(calculate({ ...state, distance: distance }));
+      }
   };
 
   return (

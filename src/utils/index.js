@@ -4,12 +4,12 @@ export function encodeGoogleMapsURLComponent(str) {
 	return str.replace(/ /g, "+");
 }
 
-export async function getDistance() {
+export async function getDistance(baselineAddress, destinationAddress) {
 	try {
-		const baselineAddress = "956 Richmond St, London, ON N6A 3J5, Canada";
-		const destinationAddress =
-			"534 Blackwater Pl, London, ON N5X 4J4, Canada";
-		const apiUrl = `${import.meta.env.API_URL}/distance`; 
+		// const baselineAddress = "956 Richmond St, London, ON N6A 3J5, Canada";
+		// const destinationAddress =
+		// 	"534 Blackwater Pl, London, ON N5X 4J4, Canada";
+		const apiUrl = `http://localhost:3000/distance`;
 
 		const response = await axios.get(apiUrl, {
 			params: {
@@ -17,8 +17,8 @@ export async function getDistance() {
 				destinations: destinationAddress,
 			},
 		});
-		console.log({ response });
-		return response.data.rows[0].elements;
+		// console.log({ response });
+		return (response.data.rows[0].elements[0].distance.value)/1000;
 	} catch (error) {
 		console.error(error.message);
 		return null;

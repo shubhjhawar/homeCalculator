@@ -173,7 +173,7 @@ export const mainSlice = createSlice({
     },
     
     calculate: (state, action) => {
-      const { baseline, destination, boxes, packagedItems, assembledItems, disassembledItems, storageItems, craneItems } = action.payload;
+      const { baseline, destination, boxes, packagedItems, assembledItems, disassembledItems, storageItems, craneItems, distance} = action.payload;
     
       // Calculate total price for all items
       let totalPrice = 0;
@@ -182,8 +182,7 @@ export const mainSlice = createSlice({
       let boxesPrice = 0;
       let itemsPrice = 0;
 
-
-      getDistance()
+      distancePrice = parseInt(50 * distance);
     
       // Calculate total price for items
       if (state.items) {
