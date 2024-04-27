@@ -61,17 +61,15 @@ const Boxes = () => {
                 border: 1px solid #000000; /* Thin black border */
                 border-radius: 50%; /* Circular shape for the thumb */
                 cursor: pointer; /* Cursor style */
-                margin-top: -6px; /* Adjust vertical alignment */
               }
 
               input[type="range"]::-moz-range-thumb {
-                width: 20px; /* Width of the thumb */
-                height: 20px; /* Height of the thumb */
+                width: 30px; /* Width of the thumb */
+                height: 30px; /* Height of the thumb */
                 background: #ffffff; /* White color for the thumb */
                 border: 1px solid #000000; /* Thin black border */
                 border-radius: 50%; /* Circular shape for the thumb */
                 cursor: pointer; /* Cursor style */
-                margin-top: -6px; /* Adjust vertical alignment */
               }
             `}
           </style>

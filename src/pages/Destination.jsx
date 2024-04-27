@@ -128,15 +128,15 @@ const Destination = () => {
         </div>
       </div>
 
-      <IoIosArrowDroprightCircle className='hidden md:block absolute top-1/2 right-0 w-10 h-10 mr-10 text-[#008EF5] hover:text-[#006EF5]' onClick={() => navigate('/destination')} />
+      <IoIosArrowDroprightCircle className='hidden md:block absolute top-1/2 right-0 w-10 h-10 mr-10 text-[#008EF5] hover:text-[#006EF5]' onClick={() => navigate('/items')} />
 
       {/* base */}
-      <div className="flex flex-col items-center md:h-[150px] relative">
+      <div className="flex flex-col w-full items-center md:h-[150px] relative">
         <img src={firstballoon} alt="firstballoon" className='parcel-animation absolute bottom-14 right-[100px] z-30'/>
         <img src={thirdballoon} alt="thirdballoon" className='parcel-animation absolute bottom-14 right-[50px] z-30'/>
         <img src={secondballoon} alt="secondballoon" className='parcel-animation absolute bottom-14 right-[10px] z-30'/>
-        <img src={grass} alt="grass" className='z-20'/>
-        <img src={grayslab} alt="grayslab" className='z-20'/>
+        <img src={grass} alt="grass" className='z-20 w-full'/>
+        <img src={grayslab} alt="grayslab" className='z-20 w-full'/>
       </div>
     </div>
   )

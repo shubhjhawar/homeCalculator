@@ -132,10 +132,10 @@ const Baseline = () => {
       <IoIosArrowDroprightCircle className='hidden md:block absolute top-1/2 right-0 w-10 h-10 mr-10 text-[#008EF5] hover:text-[#006EF5]' onClick={() => navigate('/destination')} />
 
       {/* base */}
-      <div className="flex flex-col items-center md:h-[150px] relative">
+      <div className="flex flex-col w-full items-center md:h-[150px] relative">
         <img src={rocket} alt="rocket" className="rocket-animation absolute bottom-14 left-10 w-26 h-40 max-md:w-24 max-md:h-24 z-10" />
         <img src={marker} alt="marker" className='absolute bottom-14 right-10 w-26 h-40 max-md:w-14 max-md:h-24 z-30'/>
-        <img src={grass} alt="grass" className=' w-full object-cover'/>
+        <img src={grass} alt="grass" className='z-20 w-full object-cover'/>
         <img src={grayslab} alt="grayslab" className='z-20 w-full object-cover'/>
       </div>
     </div>
