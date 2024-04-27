@@ -1,16 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { calculateCranePrice, getDistance } from '../utils';
+import { calculateCranePrice } from '../utils';
 
 const initialState = {
   items: [],
   baseline: {
-    address: '956 Richmond St, London, ON N6A 3J5, Canada',
+    address: '',
     floor: '1',
     elevator: false,
     truckAccess: 'easy'
   },
   destination: {
-    address: '534 Blackwater Pl, London, ON N5X 4J4, Canada',
+    address: '',
     floor: '1',
     elevator: false,
     truckAccess: 'easy'
@@ -19,11 +19,11 @@ const initialState = {
   packagedItems: [],
   assembledItems: [],
   disassembledItems: [],
-  storageItems: [],
-  storagePeriod: {
-    startDay: '',
-    endDay: '',
-  },
+  // storageItems: [],
+  // storagePeriod: {
+  //   startDay: '',
+  //   endDay: '',
+  // },
   craneItems: [],
   totalPrice: 0,
   servicesPrice: 0,

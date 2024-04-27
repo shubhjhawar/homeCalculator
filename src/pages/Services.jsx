@@ -32,7 +32,7 @@ const Services = () => {
         <Assemble />
         <Disassemble />
         <Packaging />
-        <Storage />
+        {/* <Storage /> */}
         <Crane />
 
         {/* moving truck button */}
