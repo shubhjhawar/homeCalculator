@@ -18,22 +18,19 @@ export async function getDistance(baselineAddress, destinationAddress) {
 			},
 		});
 		// console.log({ response });
-		return (response.data.rows[0].elements[0].distance.value)/1000;
+		return response.data.rows[0].elements[0].distance.value / 1000;
 	} catch (error) {
 		console.error(error.message);
 		return null;
 	}
 }
 
-
-export async function sendEmail(emailbody) {
+export async function sendEmail(emailBody) {
 	try {
-		// PLEASE FIX THIS DENYS 
+		// PLEASE FIX THIS DENYS
 		const apiUrl = `http://localhost:3000/email`;
 
-		const response = await axios.post(apiUrl, {
-			emailbody,
-		});
+		const response = await axios.post(apiUrl, emailBody);
 		// console.log({ response });
 		return response;
 	} catch (error) {
