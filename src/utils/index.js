@@ -25,6 +25,23 @@ export async function getDistance(baselineAddress, destinationAddress) {
 	}
 }
 
+
+export async function sendEmail(emailbody) {
+	try {
+		// PLEASE FIX THIS DENYS 
+		const apiUrl = `http://localhost:3000/email`;
+
+		const response = await axios.post(apiUrl, {
+			emailbody,
+		});
+		// console.log({ response });
+		return response;
+	} catch (error) {
+		console.error(error.message);
+		return null;
+	}
+}
+
 export const calculateCranePrice = (floorCount) => {
 	// Base price for up to the 5th floor
 	let basePrice = 400;
