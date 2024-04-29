@@ -1,21 +1,37 @@
 /* Cloud.css */
 @keyframes moveCloud {
     0% {
-      transform: translateX(3px); /* Move 5px to the right */
+      transform: translateX(10px); /* Move 5px to the right */
     }
     50% {
-      transform: translateX(-3px); /* Move 5px to the left */
+      transform: translateX(-10px); /* Move 5px to the left */
     }
     100% {
-      transform: translateX(3px); /* Move 5px to the right */
+      transform: translateX(10px); /* Move 5px to the right */
     }
   }
   
   .cloud {
-    animation: moveCloud 2s linear infinite; /* Apply animation to the cloud image */
+    animation: moveCloud 5s linear infinite; /* Apply animation to the cloud image */
   }
   
   .cloud-left {
-    animation: moveCloud 2s linear infinite reverse; /* Apply animation to the cloudleft image */
+    animation: moveCloud 5s linear infinite reverse; /* Apply animation to the cloudleft image */
   }
   
+
+  @keyframes shrinkEnlarge {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .smallcloud {
+    animation: shrinkEnlarge 2s ease-in-out infinite;
+  }

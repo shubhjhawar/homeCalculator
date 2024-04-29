@@ -87,16 +87,16 @@ const Baseline = () => {
         </div>
 
         {/* elevator and floor selection */}
-        <div className='w-full flex justify-end items-end gap-[70px] px-8 mt-[30px]'>
+        <div className='w-full flex-row-reverse flex gap-[70px] px-8 mt-[30px]'>
           {/* Elevator radio buttons */}
-          <div className="flex flex-col items-end">
-            <h3 className='mb-1'>?יש מעלית</h3>
-            <div className='flex gap-2 border-[1px] border-[#cccccc] rounded-md bg-white w-[150px]'>
-              <div className='w-[75px] border-r-[1px] border-[#cccccc] flex items-center px-2 gap-[12px] h-[44px]'>
+          <div className="flex flex-col justify-end items-end">
+            <h3 className='mb-1'>יש מעלית?</h3>
+            <div className='flex gap-2 border-[1px] border-[#cccccc] rounded-md bg-white w-[200px]'>
+              <div className='w-1/2 border-r-[1px] border-[#cccccc] flex  justify-center items-center px-2 gap-[12px] h-[44px]'>
                 <button onClick={() => handleElevatorChange(true)} className={`w-5 h-5 ${form.elevator ? 'bg-[#7F56D9]' : 'border-[1px] bg-white border-[#cccccc]'}  rounded-full`} />
                 <label htmlFor="elevatorYes">לא</label>
               </div>
-              <div className="w-[75px] flex px-2 items-center gap-[12px] h-[44px]">
+              <div className="w-1/2 flex px-2 justify-center items-center gap-[12px] h-[44px]">
                 <button onClick={() => handleElevatorChange(false)} className={`w-5 h-5 ${!form.elevator ? 'bg-[#7F56D9]' : 'border-[1px] bg-white border-[#cccccc]'}  rounded-full`} />
                 <label htmlFor="elevatorNo">כן</label>
               </div>
@@ -106,7 +106,7 @@ const Baseline = () => {
           {/* Floor selection dropdown */}
           <div className="flex flex-col justify-end items-end w-[80px]">
             <h3 className='mb-1'>מספר קומה</h3>
-            <select onChange={(e) => handleFloorChange(e.target.value)} className="px-2 h-[47px] w-[95px] border border-[#cccccc] border-opacity-100 rounded-md bg-white">
+            <select onChange={(e) => handleFloorChange(e.target.value)} className="px-2 h-[44px] w-[82px] border border-[#cccccc] border-opacity-100 rounded-md bg-white">
               {[...Array(20)].map((_, index) => (
                 <option key={index} value={index + 1} className='bg-[#96E0F8]'>{index + 1}</option>
               ))}
