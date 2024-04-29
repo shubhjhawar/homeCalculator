@@ -16,7 +16,7 @@ const MovingTruck = ({link}) => {
         <div className='w-full flex items-center justify-center'>
             <img src={arrow} alt="arrow" />
         </div>
-        <h2 className='w-full text-xl flex items-center justify-center'>Click <span className='text-orange-500 px-2'>n</span>Move</h2>
+        <h2 className='w-full text-xl flex items-center justify-center bm-font'>Click <span className='text-orange-500 px-2'>n</span>Move</h2>
     </div>
   )
 }

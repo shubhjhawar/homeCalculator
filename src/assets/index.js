@@ -45,6 +45,8 @@ import arrowdown from "./arrow_downward.png"
 import greenarrow from "./green arrow.png"
 import basebg from "./basebg.png"
 import destinationbg from "./destinationbg2.png"
+import servicesbg2 from "./boxesbg2.png"
+import crane2 from "./crane2.png"
 
 
-export {home_bg, cloud, cloudleft, basebg, destinationbg, firstballoon, secondballoon, thirdballoon, parcel, arrow1, text1, text2, text3, text4, truck, sun, hotairballoon, grayslab, grass, marker, rocket, arrow, items_bg, add, minus, newCloud, boxes_img, cute_boxes, progress_bar, carousel_arrow, progress_bar_services, progress_bar_items, progress_bar_baseline, progress_bar_destination, services_bg, extra, box, services, couch, pin, sum1, sum2, sum3, sum4, sum5, arrowdown, greenarrow}
+export {home_bg, cloud, cloudleft, basebg, destinationbg, servicesbg2, crane2, firstballoon, secondballoon, thirdballoon, parcel, arrow1, text1, text2, text3, text4, truck, sun, hotairballoon, grayslab, grass, marker, rocket, arrow, items_bg, add, minus, newCloud, boxes_img, cute_boxes, progress_bar, carousel_arrow, progress_bar_services, progress_bar_items, progress_bar_baseline, progress_bar_destination, services_bg, extra, box, services, couch, pin, sum1, sum2, sum3, sum4, sum5, arrowdown, greenarrow}

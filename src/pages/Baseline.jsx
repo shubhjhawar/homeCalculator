@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { grass, basebg, marker, rocket, progress_bar_baseline } from '../assets';
+import { grass, basebg, sun, rocket, progress_bar_baseline } from '../assets';
 import "../styles/rocket.css";
 import "../styles/buttons.css";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
@@ -9,6 +9,7 @@ import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
 import { useSelector, useDispatch } from 'react-redux';
 import { addBaseline } from '../slices/slices';
 import Cloud from '../components/Cloud';
+import SmallCloud from '../components/SmallCloud';
 
 const Baseline = () => {
   const navigate = useNavigate();
@@ -63,8 +64,10 @@ const Baseline = () => {
         <Cloud />
       </div>
       <div className="absolute top-[134px] left-[1118px] w-[100px] h-[62px]">
-        <Cloud />
+        <SmallCloud />
       </div>
+      <img src={sun} alt="sun" className="absolute top-10 right-[20px] -z-[20]"/>
+
 
       <div className="w-full md:w-1/3 flex flex-col items-end z-20 mt-[80px]">
         <h1 className="w-full flex justify-center text-[45px] font-semibold">המראה</h1>

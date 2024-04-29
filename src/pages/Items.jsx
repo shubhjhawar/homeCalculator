@@ -8,6 +8,7 @@ import { IoIosAdd } from "react-icons/io";
 import { RiSubtractFill } from "react-icons/ri";
 import { useSelector, useDispatch } from 'react-redux';
 import { addItems, changeItemQuantity, removeItem } from '../slices/slices';
+import SmallCloud from '../components/SmallCloud';
 
 const Items = () => {
   const reduxItems = useSelector(state => state.items.items);
@@ -67,20 +68,31 @@ const Items = () => {
   return (
     <div className="fixed bottom-0 w-full z-50 h-full overflow-auto flex flex-col justify-between items-center">
     
-        <img src={progress_bar_items} className='h-2 mt-4 w-full px-6' />
+      <img src={progress_bar_items} className='h-2 mt-4 w-full px-6' />
+      <div className="absolute top-[124px] left-[58px] max-md:left-[14px] w-[250px] h-[140px] -z-[20]">
+        <Cloud />
+      </div>
+      <div className="absolute top-[207px] left-[1233px] w-[250px] h-[118px] -z-[20]">
+        <Cloud />
+      </div>
+      <div className="absolute top-[134px] left-[1118px] w-[100px] h-[62px]">
+        <SmallCloud />
+      </div>
+      <img src={sun} alt="sun" className="absolute top-10 right-[20px] -z-[20]"/>
+
       <div className="mt-20 md:w-1/3 flex flex-col justify-center items-center gap-3 z-20">
 
-        <div className="p-2 flex flex-col justify-center items-center mt-5">
-          <h1 className="text-xl">add items</h1>
+        <div className="p-2 flex flex-col justify-center items-center">
+          <h1 className="w-full flex justify-center text-[35px] font-semibold">הוסף פריטים למשאית שלך</h1>
         </div>
 
-        <h2 className='w-full flex justify-end mr-4'>Items</h2>
+        <h2 className='w-full flex justify-end mr-4'>חפש פריטים</h2>
         <input
           type="text"
           onChange={handleInputChange}
           className="border border-gray-300 rounded-md px-3 py-2 text-right w-full"
           style={{ maxHeight: "100px" }}
-          placeholder="Search..."
+          placeholder="ארון 3 דלתות, מקרר, שולחן אוכל"
           value={searchQuery}
         />
         <div className='bg-white w-full text-black rounded-md max-h-[200px] overflow-y-scroll' style={{ direction: 'rtl' }}>
@@ -114,11 +126,11 @@ const Items = () => {
             <div key={index} className='flex justify-between w-full p-2'>
               <div className='flex gap-5'>
                 <button onClick={() => handleQuantityChange(item.name, 1)}>
-                  <IoIosAdd className='bg-white rounded-sm' />
+                  <IoIosAdd className='bg-white rounded-md w-5 h-5' />
                 </button>
                 <p>{item.quantity}</p>
                 <button onClick={() => handleQuantityChange(item.name, -1)}>
-                  <RiSubtractFill className='bg-white rounded-sm' />
+                  <RiSubtractFill className='bg-white rounded-md w-5 h-5' />
                 </button>
               </div>
               <div className='flex gap-2 items-center'>
@@ -140,7 +152,7 @@ const Items = () => {
           <MovingTruck link="/boxes" />
         </div>
       </div>
-      <div className='w-full mt-20 -z-[30] flex justify-end'>
+      <div className='w-full -z-[30] flex justify-end'>
         <img src={items_bg} alt="items_bg" className="w-full"/>
       </div>
     </div>

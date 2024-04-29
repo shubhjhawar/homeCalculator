@@ -4,6 +4,8 @@ import Cloud from '../components/Cloud';
 // import smallCloud from "../components/smallCloud";
 import '../styles/truckAnimation.css';
 import MovingTruck from '../components/MovingTruck';
+import SmallCloud from '../components/SmallCloud';
+import Balloon from '../components/Balloon';
 
 const Home = () => {
   return (
@@ -16,10 +18,13 @@ const Home = () => {
         <Cloud />
       </div>
       <div className="absolute top-[134px] left-[1118px] w-[100px] h-[62px]">
-        <Cloud />
+        <SmallCloud />
+      </div>
+      <div className="absolute top-[360px] right-20 max-md:right-[20px] -z-[20]">
+        <Balloon />
       </div>
       {/* <img src={sun} alt="sun" className="absolute top-10 right-[20px] -z-[20]"/> */}
-      <img src={hotairballoon} alt="hotairballoon" className="absolute top-[360px] right-20 max-md:right-[20px] -z-[20]"/>
+      {/* <img src={hotairballoon} alt="hotairballoon" className="absolute top-[360px] right-20 max-md:right-[20px] -z-[20]"/> */}
 
 
 

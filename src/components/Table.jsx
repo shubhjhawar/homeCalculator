@@ -38,20 +38,20 @@ const Table = () => {
   return (
     <div className="hidden lg:block w-full">
       <div className="w-full grid grid-cols-9 bg-blue-200 bg-gray-100 rounded-t-md p-2">
-        <div className='w-full flex flex-col items-center justify-center'>Total costs</div>
+        <div className='w-full flex flex-col items-center justify-center'>סה”כ עלויות</div>
         <div className="col-span-6">
-          <h2 className='w-full flex flex-col items-center'>Extras</h2>
+          <h2 className='w-full flex flex-col items-center'>תוספות</h2>
           <div className='grid grid-cols-6'>
-            <p className='flex flex-col items-center'>crane</p>
-            <p className='flex flex-col items-center'>packing</p>
-            <p className='flex flex-col items-center'>disassembly</p>
-            <p className='flex flex-col items-center'>assembly</p>
-            <p className='flex flex-col items-center'>accessibility</p>
-            <p className='flex flex-col items-center'>floor</p>
+            <p className='flex flex-col items-center'>אחסנה</p>
+            <p className='flex flex-col items-center'>אריזה</p>
+            <p className='flex flex-col items-center'>הרכבה</p>
+            <p className='flex flex-col items-center'>נגישות</p>
+            <p className='flex flex-col items-center'> קומה</p>
+            <p className='flex flex-col items-center'>כמות פריטים</p>
           </div>
         </div>
-        <div className='w-full flex flex-col items-center justify-center'>amount of items</div>
-        <div className='w-full flex flex-col items-center justify-center'>Description</div>
+        <div className='w-full flex flex-col items-center justify-center'>מחיר בסיס</div>
+        <div className='w-full flex flex-col items-center justify-center'>תיאור</div>
       </div>
       {items.map((item, index) => (
         <div key={index} className="w-full grid grid-cols-10 bg-transparent p-2 border-[1px] border-gray-500">
