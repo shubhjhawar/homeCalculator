@@ -65,7 +65,7 @@ const Assemble = () => {
             <button onClick={()=>setToggle((prev)=>!prev)}>
                 {toggle===true ? <FaAngleUp /> : <FaAngleDown />}
             </button>
-            <h4>Assemble</h4>
+            <h4>פירוק</h4>
         </div>
         <div className={`${toggle ? 'block' : 'hidden'} ${listToggle && 'hidden'} flex flex-col w-full justify-center items-center gap-2 mt-4`}>
             <p className='text-sm text-center'>שירותי אחסנה מאפשרים לאחסן את תכולת הדירה לתקופה מסויימת. הגדירו תאריך התחלה, ותאריך סיום מוערך של תקופת האחסנה הנדרשת.</p>

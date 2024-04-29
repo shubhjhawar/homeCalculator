@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { boxes_img, cute_boxes, progress_bar, carousel_arrow } from '../assets';
+import { boxes_img, cute_boxes, progress_bar, carousel_arrow, sun } from '../assets';
 import Cloud from '../components/Cloud';
 import MovingTruck from '../components/MovingTruck';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { useSelector, useDispatch } from 'react-redux';
 import { addBoxes } from '../slices/slices';
+import SmallCloud from '../components/SmallCloud';
 
 
 const Boxes = () => {
@@ -23,6 +24,16 @@ const Boxes = () => {
     <div>
       <div>
         <img src={progress_bar} className='h-2 mt-4 w-full px-6' />
+        <div className="absolute top-[124px] left-[58px] max-md:left-[14px] w-[250px] h-[140px] -z-[20]">
+        <Cloud />
+      </div>
+      <div className="absolute top-[207px] left-[1233px] w-[250px] h-[118px] -z-[20]">
+        <Cloud />
+      </div>
+      <div className="absolute top-[134px] left-[1118px] w-[100px] h-[62px]">
+        <SmallCloud />
+      </div>
+      <img src={sun} alt="sun" className="absolute top-10 right-[20px] -z-[20]"/>
 
       </div>
       <div className='text-center'>
