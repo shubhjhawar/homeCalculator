@@ -4,7 +4,7 @@ import Cloud from '../components/Cloud';
 // import smallCloud from "../components/smallCloud";
 import '../styles/truckAnimation.css';
 import MovingTruck from '../components/MovingTruck';
-import SmallCloud from '../components/SmallCloud';
+import SmallCloud from '../components/smallCloud';
 import Balloon from '../components/Balloon';
 
 const Home = () => {

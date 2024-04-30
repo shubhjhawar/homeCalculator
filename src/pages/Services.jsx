@@ -10,7 +10,7 @@ import Storage from '../components/Storage';
 import { crane2, progress_bar_services, servicesbg2 } from '../assets';
 import { getDistance } from '../utils';
 import Cloud from '../components/Cloud';
-import SmallCloud from '../components/SmallCloud';
+import SmallCloud from '../components/smallCloud';
 
 const Services = () => {
   const dispatch = useDispatch();

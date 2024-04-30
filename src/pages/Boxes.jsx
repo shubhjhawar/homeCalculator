@@ -5,7 +5,7 @@ import MovingTruck from '../components/MovingTruck';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { useSelector, useDispatch } from 'react-redux';
 import { addBoxes } from '../slices/slices';
-import SmallCloud from '../components/SmallCloud';
+import SmallCloud from '../components/smallCloud';
 
 
 const Boxes = () => {
