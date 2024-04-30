@@ -9,7 +9,8 @@ export async function getDistance(baselineAddress, destinationAddress) {
 		// const baselineAddress = "956 Richmond St, London, ON N6A 3J5, Canada";
 		// const destinationAddress =
 		// 	"534 Blackwater Pl, London, ON N5X 4J4, Canada";
-		const apiUrl = `http://localhost:3000/distance`;
+		const apiUrl = `https://homecalculatorbackend.onrender.com/distance`;
+		// const apiUrl = `http://localhost:3000/distance`;
 
 		const response = await axios.get(apiUrl, {
 			params: {
@@ -28,7 +29,8 @@ export async function getDistance(baselineAddress, destinationAddress) {
 export async function sendEmail(emailBody) {
 	try {
 		// PLEASE FIX THIS DENYS
-		const apiUrl = `http://localhost:3000/email`;
+		const apiUrl = `https://homecalculatorbackend.onrender.com/email`;
+		// const apiUrl = `http://localhost:3000/email`;
 
 		const response = await axios.post(apiUrl, emailBody);
 		// console.log({ response });
