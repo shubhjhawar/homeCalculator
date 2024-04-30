@@ -9,7 +9,7 @@ import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
 import { useSelector, useDispatch } from 'react-redux';
 import { addBaseline } from '../slices/slices';
 import Cloud from '../components/Cloud';
-import SmallCloud from '../components/SmallCloud';
+import SmallCloud from '../components/smallCloud';
 
 const Baseline = () => {
   const navigate = useNavigate();
