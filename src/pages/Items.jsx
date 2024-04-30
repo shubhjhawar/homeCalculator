@@ -8,7 +8,7 @@ import { IoIosAdd } from "react-icons/io";
 import { RiSubtractFill } from "react-icons/ri";
 import { useSelector, useDispatch } from 'react-redux';
 import { addItems, changeItemQuantity, removeItem } from '../slices/slices';
-import SmallCloud from '../components/SmallCloud';
+import SmallCloud from '../components/smallCloud';
 
 const Items = () => {
   const reduxItems = useSelector(state => state.items.items);
